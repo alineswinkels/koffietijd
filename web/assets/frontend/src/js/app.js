@@ -65,6 +65,12 @@ var volumeElement = null;
 
 window.onload = function() {
 
+
+    $("#koffiecode").focus(); 
+    //    $( ".koffiecode" ).click(function() {
+    //   alert('test');
+    // });
+
     volumeElement = $('.js-volume');
 
     var counter = $('.js-counter');
