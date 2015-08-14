@@ -1,9 +1,15 @@
 services:
+    app.controller.main:
+        class: FH\Bundle\AppBundle\Controller\MainController
+
     app.controller.question:
         class: FH\Bundle\AppBundle\Controller\QuestionController
         arguments:
             - @app.repository.question
-            
+            - @app.service.login_user
+            - @router
+            - @doctrine.orm.entity_manager
+
     app.controller.user:
         class: FH\Bundle\AppBundle\Controller\UserController
         arguments:

@@ -2,5 +2,24 @@
 
 {% block content %}
     {{ question.title }}
+
+    <form method="post">
+        <label for="a">{{ question.answerA }}</label>
+        <input type="radio" id="a" name="answer" value="a" />
+        <br />
+
+        <label for="b">{{ question.answerB }}</label>
+        <input type="radio" id="b" name="answer" value="b" />
+        <br />
+
+        <label for="c">{{ question.answerC }}</label>
+        <input type="radio" id="c" name="answer" value="c" />
+        <br />
+
+        <label for="d">{{ question.answerD }}</label>
+        <input type="radio" id="d" name="answer" value="d" />
+
+        <input type="submit" value="Verstuur" />
+    </form>
 {% endblock %}
 

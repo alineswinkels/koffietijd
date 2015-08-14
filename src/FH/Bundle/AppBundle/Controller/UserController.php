@@ -84,6 +84,7 @@ class UserController
      */
     public function consumptionAction(Request $request)
     {
+        /** @var User $currentUser */
         $currentUser = $this->entityManager->merge($this->loginUser->getUser());
         $users = $this->userRepository->findAllExceptUser($currentUser);
 
