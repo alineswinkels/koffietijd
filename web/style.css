@@ -13,7 +13,7 @@ form{
 	text-align: center;
 }
 input[type='submit']{
-	margin-top: 1em;
+	margin-top: 2em;
 	border-radius: 50%;
 	border:none;
 	width:100px;
@@ -63,6 +63,7 @@ a div{
 	width:20%;
 	margin-left:10%;
 	float: left;
+	margin-top: 5em;
 	letter-spacing: 1px;
 }
 .headrank p{
@@ -131,24 +132,63 @@ a div{
 	position: relative;
 }
 .rank_name h1{
-	text-align: right;
-	font-size: 1em;
+	text-align: center;
+	font-size: 0.8em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid black;
 }
 .rank_icon{
-	height: 100%;
+	height: auto;
     display: block;
     position: absolute;
-    top: 0;
+    top: -200%;
+    margin-left: 40%;
     left: 0;
-    width: auto;
+    width: 20%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    
 }
 .coffee{
 	background-image: url('img/coffee.png');
 }
 .butler{
 	background-image: url('img/butler.png');
+}
+
+.quiz_img{
+	width:50%;
+	height:auto;
+	margin: 0 auto;
+	display: block;
+}
+label{
+	font-size: 2em;
+	font-weight: 800;
+}
+/*.submit_answer{
+	position: absolute;
+	bottom:0;
+}*/
+form{
+	max-width: 50%;
+	margin: 0 auto;
+	display: block;
+}
+.quiz_form{
+	margin-top: 2em;
+	text-align: right;
+}
+
+#logout{
+	width:5%;
+	height:0;
+	padding-top: 5%;
+	position: absolute;
+	right:1em;
+	top: 1em;
+	background-image: url('img/logout.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }

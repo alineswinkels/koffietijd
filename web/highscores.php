@@ -5,7 +5,7 @@
 <section class='rank'>
 	<div class='rank_name'>
 		<img class='rank_icon' src='img/coffee.png'/>
-		<h1>De meeste koffie gedronken</h1>
+		<h1>meeste koffie gedronken</h1>
 	</div>
 	<div class='headrank'>
 		<div class='head' style="background-image:url('img/Sietse_Radstake.jpg')" alt='sietse'></div>
@@ -37,6 +37,10 @@
 	</div>
 </section>
 <section class='rank'>
+	<div class='rank_name'>
+		<img class='rank_icon' src='img/butler.png'/>
+		<h1>meeste koffie gebracht</h1>
+	</div>
 		<div class='headrank'>
 		<div class='head' style="background-image:url('img/Sietse_Radstake.jpg')" alt='sietse'></div>
 		<h2>Sietse_Radstake</h2>
@@ -66,6 +70,10 @@
 	</div>
 </section>
 <section class='rank'>
+	<div class='rank_name'>
+		<img class='rank_icon' src='img/quiz.png'/>
+		<h1>meeste kennis</h1>
+	</div>
 		<div class='headrank'>
 		<div class='head' style="background-image:url('img/Stefan_Moonen.jpg')" alt='sietse'></div>
 		<h2>Stefan_Moonen</h2>

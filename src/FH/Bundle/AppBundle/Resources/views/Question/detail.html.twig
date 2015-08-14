@@ -1,10 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-    {{ question.title }}
-    <img src="{{ asset(question.imagePath) }}" alt="{{ question.title }}" />
+    <h1>{{ question.title }}</h1>
+    <img class='quiz_img' src="{{ asset(question.imagePath) }}" alt="{{ question.title }}" />
 
-    <form method="post">
+    <form method="post" class='quiz_form'>
         <label for="a">{{ question.answerA }}</label>
         <input type="radio" id="a" name="answer" value="a" />
         <br />
@@ -19,8 +19,8 @@
 
         <label for="d">{{ question.answerD }}</label>
         <input type="radio" id="d" name="answer" value="d" />
-
-        <input type="submit" value="Verstuur" />
+        <br/>
+        <input class='submit_answer' type="submit" value="Verstuur" />
     </form>
 {% endblock %}
 
