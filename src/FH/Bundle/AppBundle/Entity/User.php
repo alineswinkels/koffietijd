@@ -17,6 +17,10 @@ class User
 
     private $image;
 
+    private $consumptionsFetched;
+    private $consumptionsReceived;
+    private $questionAnswers;
+
     public function __toString()
     {
         return (string) $this->getName();

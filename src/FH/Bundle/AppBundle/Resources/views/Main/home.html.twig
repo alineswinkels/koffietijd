@@ -1,6 +1,53 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-Home
+    <h1>De tussenstand</h1>
+    <section class='rank'>
+    	<div class='rank_name'>
+    		<img class='rank_icon' src="{{ asset('img/coffee.png') }}" />
+    		<h1>De meeste koffie gedronken</h1>
+    	</div>
+
+        {% for topReceiver in topReceivers %}
+            {% set _user = topReceiver[0] %}
+            <div class='headrank'>
+                <div class='head' style="background-image:url('{{ asset(_user.imagePath) }}')"></div>
+                <h2>{{ _user }}</h2>
+                <h3>Coffee addict {{ loop.index }}'</h3>
+                <div class='rank_description'>
+                    <p>{{ topReceiver['received_count'] }} <br/>
+                    <span class='point_despription'>koffie</span></p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class='rank'>
+        {% for topFetcher in topFetchers %}
+            {% set _user = topFetcher[0] %}
+            <div class='headrank'>
+                <div class='head' style="background-image:url('{{ asset(_user.imagePath) }}')"></div>
+                <h2>{{ _user }}</h2>
+                <h3>Butler {{ loop.index }}'</h3>
+                <div class='rank_description'>
+                    <p>{{ topFetcher['fetched_count'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class='rank'>
+        {% for topQuestionResult in topQuestionResults %}
+            {% set _user = topQuestionResult[0] %}
+    		<div class='headrank'>
+                <div class='head' style="background-image:url('{{ asset(_user.imagePath) }}')"></div>
+                <h2>{{ _user }}</h2>
+                <h3>Quiz koning {{ loop.index }}'</h3>
+                <div class='rank_description'>
+                    <p>{{ topQuestionResult['total_score'] }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
 {% endblock %}
 

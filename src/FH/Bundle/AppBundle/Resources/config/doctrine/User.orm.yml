@@ -24,3 +24,14 @@ FH\Bundle\AppBundle\Entity\User:
         image:
             type:           string
             length:         120
+
+    oneToMany:
+        consumptionsFetched:
+            targetEntity:   FH\Bundle\AppBundle\Entity\Consumption
+            mappedBy:       fetcher
+        consumptionsReceived:
+            targetEntity:   FH\Bundle\AppBundle\Entity\Consumption
+            mappedBy:       receiver
+        questionAnswers:
+            targetEntity:   FH\Bundle\AppBundle\Entity\QuestionAnswer
+            mappedBy:       user

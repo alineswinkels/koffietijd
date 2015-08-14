@@ -67,6 +67,52 @@ class UserRepository
     }
 
     /**
+     * @return User[]
+     */
+    public function getTopFetchers()
+    {
+        return $this->createBaseQueryBuilder()
+            ->select('u, COUNT(cf) as fetched_count')
+            ->innerJoin('u.consumptionsFetched', 'cf')
+            ->groupBy('u')
+            ->orderBy('fetched_count', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function getTopReceivers()
+    {
+        return $this->createBaseQueryBuilder()
+            ->select('u, COUNT(cr) as received_count')
+            ->innerJoin('u.consumptionsReceived', 'cr')
+            ->groupBy('u')
+            ->orderBy('received_count', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return User[]
+     */
+    public function getTopQuestionResults()
+    {
+        return $this->createBaseQueryBuilder()
+            ->select('u, SUM(qa.correct) as total_score')
+            ->innerJoin('u.questionAnswers', 'qa')
+            ->groupBy('u')
+            ->orderBy('total_score', 'DESC')
+            ->having('total_score > 0')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
      * @return QueryBuilder
      */
     private function createBaseQueryBuilder()

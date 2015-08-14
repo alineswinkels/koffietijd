@@ -2,13 +2,8 @@
 
 namespace FH\Bundle\AppBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
-use FH\Bundle\AppBundle\User\LoginUser;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
-use FH\Bundle\AppBundle\Repository\QuestionRepository;
+use FH\Bundle\AppBundle\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * @author Bart van Amelsvoort <bart@freshheads.com>
@@ -16,13 +11,34 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class MainController
 {
     /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
+    /**
+     * @param UserRepository $userRepository
+     */
+    public function __construct(UserRepository $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
+
+    /**
      * @Template
      *
-     * @param Request $request
      * @return array
      */
-    public function homeAction(Request $request)
+    public function homeAction()
     {
-        return [];
+        $topFetchers = $this->userRepository->getTopFetchers();
+        $topReceivers = $this->userRepository->getTopReceivers();
+        $topQuestionResults = $this->userRepository->getTopQuestionResults();
+
+        return [
+            'topFetchers' => $topFetchers,
+            'topReceivers' => $topReceivers,
+            'topQuestionResults' => $topQuestionResults
+
+        ];
     }
 }

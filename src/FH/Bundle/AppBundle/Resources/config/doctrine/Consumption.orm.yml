@@ -18,11 +18,13 @@ FH\Bundle\AppBundle\Entity\Consumption:
     manyToOne:
         fetcher:
             targetEntity:   FH\Bundle\AppBundle\Entity\User
+            inversedBy:     consumptionsFetched
             joinColumn:
                 nullable:   false
                 onDelete:   CASCADE
         receiver:
             targetEntity:   FH\Bundle\AppBundle\Entity\User
+            inversedBy:     consumptionsReceived
             joinColumn:
                 nullable:   false
                 onDelete:   CASCADE

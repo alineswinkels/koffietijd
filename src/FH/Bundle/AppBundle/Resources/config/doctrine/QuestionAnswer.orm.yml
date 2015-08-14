@@ -20,6 +20,7 @@ FH\Bundle\AppBundle\Entity\QuestionAnswer:
     manyToOne:
         user:
             targetEntity:   FH\Bundle\AppBundle\Entity\User
+            inversedBy:     questionAnswers
             joinColumn:
                 nullable:   false
                 onDelete:   CASCADE
