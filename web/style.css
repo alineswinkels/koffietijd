@@ -21,18 +21,31 @@ input[type='submit']{
 	background-color: #19a0d8;
 	color: white;
 	font-size: 1em;
+	-webkit-appearance: none;
+}
+#heads{
+	width:75%;
+	margin: 0 auto;
 }
 #heads a{
-	height:100px;
-	width:100px;
-	margin:2em;
-	float:left;
-	text-decoration: none;
-	text-align: center;
+	    position: relative;
+    display: block;
+    float: left;
+    text-decoration: none;
+    text-align: center;
+    width: 15%;
+    margin-top: 2em;
+    margin-left: calc(25% / 6);
+    color:black;
+
+}
+
+#heads .head{
+	margin-bottom: 1em;
 }
 #heads a h2{
-	font-size: 0.8em;
-	
+	font-size: 0.5em;
+	position: relative;
 }
 a div, .headrank .head{
 	width:30%;
@@ -47,16 +60,18 @@ a div, .headrank .head{
 }
 a div{
 	width: 100%;
-	height: 100%;
-	padding: 0;
+    float: left;
+    height: 0;
+    padding-top: 100%;
 }
 
 #heads a:nth-child(1){
-	height:200px;
-	width:200px;
+	width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
 }
 #heads a:nth-child(1) h2{
-	font-size: 1.5em;
+	font-size: 1em;
 }
 
 .rank{
