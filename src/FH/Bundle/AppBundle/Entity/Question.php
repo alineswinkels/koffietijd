@@ -120,4 +120,9 @@ class Question
                 return 'Welke film is dit?';
         }
     }
+
+    public function getImagePath()
+    {
+        return sprintf('uploads/question/%s', $this->image);
+    }
 }

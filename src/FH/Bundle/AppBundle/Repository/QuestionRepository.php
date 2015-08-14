@@ -31,8 +31,9 @@ class QuestionRepository
     {
         return $this->createBaseQueryBuilder()
             ->orderBy('RAND()')
+            ->setMaxResults(1)
             ->getQuery()
-            ->getOneOrNullResult();
+            ->getSingleResult();
     }
 
     /**

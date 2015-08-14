@@ -2,6 +2,7 @@
 
 {% block content %}
     {{ question.title }}
+    <img src="{{ asset(question.imagePath) }}" alt="{{ question.title }}" />
 
     <form method="post">
         <label for="a">{{ question.answerA }}</label>

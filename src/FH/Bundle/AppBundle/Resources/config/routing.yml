@@ -3,9 +3,9 @@ home:
     defaults: { _controller: app.controller.main:homeAction }
 
 # question
-question_index:
-    path:  /vragen
-    defaults: { _controller: app.controller.question:indexAction }
+question_detail:
+    path:  /vraag/{id}
+    defaults: { _controller: app.controller.question:detailAction }
 
 # user
 user_login:

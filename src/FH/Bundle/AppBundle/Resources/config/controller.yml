@@ -14,6 +14,7 @@ services:
         class: FH\Bundle\AppBundle\Controller\UserController
         arguments:
             - @app.repository.user
+            - @app.repository.question
             - @app.service.login_user
             - @router
             - @doctrine.orm.entity_manager

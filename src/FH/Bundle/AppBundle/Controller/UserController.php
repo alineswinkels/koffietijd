@@ -4,6 +4,8 @@ namespace FH\Bundle\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
 use FH\Bundle\AppBundle\Entity\Consumption;
+use FH\Bundle\AppBundle\Entity\User;
+use FH\Bundle\AppBundle\Repository\QuestionRepository;
 use FH\Bundle\AppBundle\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -20,6 +22,11 @@ class UserController
      * @var UserRepository
      */
     private $userRepository;
+
+    /**
+     * @var QuestionRepository
+     */
+    private $questionRepository;
 
     /**
      * @var LoginUser
@@ -44,11 +51,13 @@ class UserController
      */
     public function __construct(
         UserRepository $userRepository,
+        QuestionRepository $questionRepository,
         LoginUser $loginUser,
         UrlGeneratorInterface $urlGenerator,
         EntityManager $entityManager
     ) {
         $this->userRepository = $userRepository;
+        $this->questionRepository = $questionRepository;
         $this->loginUser = $loginUser;
         $this->urlGenerator = $urlGenerator;
         $this->entityManager = $entityManager;
@@ -98,7 +107,9 @@ class UserController
             $this->entityManager->flush();
 
             return new RedirectResponse(
-                $this->urlGenerator->generate('question_index')
+                $this->urlGenerator->generate('question_detail', [
+                    'id' => $this->questionRepository->findOneRandom()->getId()
+                ])
             );
         }
 

@@ -3,7 +3,9 @@
 namespace FH\Bundle\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
+use FH\Bundle\AppBundle\Entity\Question;
 use FH\Bundle\AppBundle\Entity\QuestionAnswer;
+use FH\Bundle\AppBundle\Entity\User;
 use FH\Bundle\AppBundle\User\LoginUser;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -58,17 +60,19 @@ class QuestionController
      * @Template
      *
      * @param Request $request
+     * @param Question $question
      * @return array
      */
-    public function indexAction(Request $request)
+    public function detailAction(Request $request, Question $question)
     {
+        /** @var User $currentUser */
         $currentUser = $this->entityManager->merge($this->loginUser->getUser());
 
-        $question = $this->questionRepository->findOneRandom();
         $answer = $request->request->get('answer');
 
         if ($answer) {
-            $consumption = new QuestionAnswer($currentUser, $question, true);
+            $correct = $answer == $question->getCorrectAnswer();
+            $consumption = new QuestionAnswer($currentUser, $question, $correct);
 
             $this->entityManager->persist($consumption);
             $this->entityManager->flush();
