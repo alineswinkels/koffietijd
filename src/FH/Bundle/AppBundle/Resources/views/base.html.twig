@@ -20,7 +20,7 @@
     </div>
 
     {% if app.user %}
-        <h3>Welkom {{ app.user }}</h3>
-        <a href="{{ path('user_logout') }}">Uitloggen</a>
+        
+        <a id='logout' href="{{ path('user_logout') }}"></a>
     {% endif %}
 {% endblock %}
