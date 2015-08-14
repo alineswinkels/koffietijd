@@ -2,6 +2,8 @@
 
 namespace FH\Bundle\AppBundle\Repository;
 
+use FH\Bundle\AppBundle\Entity\User;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -23,6 +25,20 @@ class UserRepository
     }
 
     /**
+     * @param integer $id
+     * @return mixed
+     */
+    public function findOneById($id)
+    {
+        return $this->createBaseQueryBuilder()
+            ->andWhere('u.id = :id')
+            ->setParameter('id', $id)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+    /**
      * @param string $code
      * @return mixed
      */
@@ -34,6 +50,20 @@ class UserRepository
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult();
+    }
+
+    /**
+     * @param User $user
+     * @return User[]
+     */
+    public function findAllExceptUser(User $user)
+    {
+        return $this->createBaseQueryBuilder()
+            ->andWhere('u != :user')
+            ->setParameter('user', $user)
+            ->orderBy('u.firstName, u.surname')
+            ->getQuery()
+            ->getResult();
     }
 
     /**

@@ -1,0 +1,39 @@
+FH\Bundle\AppBundle\Entity\Question:
+    type: entity
+    table: question
+
+    id:
+        id:
+            type:           integer
+            generator:
+                strategy:   AUTO
+            options:
+                unsigned:   true
+
+    fields:
+        type:
+            type:           string
+            length:         120
+        image:
+            type:           string
+            length:         120
+        answerA:
+            column:         answer_a
+            type:           string
+            length:         120
+        answerB:
+            column:         answer_b
+            type:           string
+            length:         120
+        answerC:
+            column:         answer_c
+            type:           string
+            length:         120
+        answerD:
+            column:         answer_d
+            type:           string
+            length:         120
+        correctAnswer:
+            column:         correct_answer
+            type:           string
+            length:         120

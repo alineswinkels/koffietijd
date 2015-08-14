@@ -2,9 +2,6 @@
 
 namespace FH\Bundle\AppBundle\Entity;
 
-use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @author Bart van Amelsvoort <bart@freshheads.com>
  */
@@ -17,6 +14,8 @@ class User
     private $surname;
 
     private $code;
+
+    private $image;
 
     public function __toString()
     {
@@ -45,5 +44,13 @@ class User
     public function getName()
     {
         return $this->firstName . ' ' . $this->surname;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return sprintf('img/%s', $this->image);
     }
 }

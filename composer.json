@@ -21,7 +21,8 @@
         "sp/bower-bundle": "0.11.*",
         "freshheads/style-bundle": "1.2.*",
         "freshheads/deploy-bundle": "1.1.*",
-        "freshheads/essentials-bundle": "1.0.*"
+        "freshheads/essentials-bundle": "1.0.*",
+        "beberlei/DoctrineExtensions": "~1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.3.*",

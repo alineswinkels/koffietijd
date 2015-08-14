@@ -1,4 +1,9 @@
 services:
+    app.repository.question:
+        class: FH\Bundle\AppBundle\Repository\QuestionRepository
+        arguments:
+            - @doctrine.orm.entity_manager
+
     app.repository.user:
         class: FH\Bundle\AppBundle\Repository\UserRepository
         arguments:

@@ -60,6 +60,9 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        dql:
+            numeric_functions:
+                RAND: DoctrineExtensions\Query\Mysql\Rand
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -69,8 +72,6 @@ swiftmailer:
     password:  %mailer_password%
     spool:     { type: memory }
 
-# Enable this for the doctrine redis cache configuration in config_test, config_staging, config_prod
-# Your project name can be the same as the name of your (git) repository
-#fh_essentials:
-#    redis_cache:
-#        namespace: <your project name>
+fh_essentials:
+    redis_cache:
+        namespace: koffietijd

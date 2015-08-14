@@ -41,4 +41,12 @@ class LoginUser
 
         $this->tokenStorage->setToken($token);
     }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->tokenStorage->getToken()->getUser();
+    }
 }

@@ -1,0 +1,28 @@
+FH\Bundle\AppBundle\Entity\Consumption:
+    type: entity
+    table: consumption
+
+    id:
+        id:
+            type:           integer
+            generator:
+                strategy:   AUTO
+            options:
+                unsigned:   true
+
+    fields:
+        createdAt:
+            column:         created_at
+            type:           datetime
+
+    manyToOne:
+        fetcher:
+            targetEntity:   FH\Bundle\AppBundle\Entity\User
+            joinColumn:
+                nullable:   false
+                onDelete:   CASCADE
+        receiver:
+            targetEntity:   FH\Bundle\AppBundle\Entity\User
+            joinColumn:
+                nullable:   false
+                onDelete:   CASCADE

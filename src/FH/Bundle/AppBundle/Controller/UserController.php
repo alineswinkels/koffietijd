@@ -2,6 +2,8 @@
 
 namespace FH\Bundle\AppBundle\Controller;
 
+use Doctrine\ORM\EntityManager;
+use FH\Bundle\AppBundle\Entity\Consumption;
 use FH\Bundle\AppBundle\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -30,22 +32,33 @@ class UserController
     private $urlGenerator;
 
     /**
+     * @var EntityManager
+     */
+    private $entityManager;
+
+    /**
      * @param UserRepository $userRepository
      * @param LoginUser $loginUser
      * @param UrlGeneratorInterface $urlGenerator
+     * @param EntityManager $entityManager
      */
     public function __construct(
         UserRepository $userRepository,
         LoginUser $loginUser,
-        UrlGeneratorInterface $urlGenerator
+        UrlGeneratorInterface $urlGenerator,
+        EntityManager $entityManager
     ) {
         $this->userRepository = $userRepository;
         $this->loginUser = $loginUser;
         $this->urlGenerator = $urlGenerator;
+        $this->entityManager = $entityManager;
     }
 
     /**
      * @Template
+     *
+     * @param Request $request
+     * @return array
      */
     public function loginAction(Request $request)
     {
@@ -56,7 +69,7 @@ class UserController
             $this->loginUser->login($user);
 
             return new RedirectResponse(
-                $this->urlGenerator->generate('user_pick')
+                $this->urlGenerator->generate('user_consumption')
             );
         }
 
@@ -65,9 +78,31 @@ class UserController
 
     /**
      * @Template
+     *
+     * @param Request $request
+     * @return array
      */
-    public function pickAction()
+    public function consumptionAction(Request $request)
     {
-        return [];
+        $currentUser = $this->entityManager->merge($this->loginUser->getUser());
+        $users = $this->userRepository->findAllExceptUser($currentUser);
+
+        $receiverId = $request->query->get('receiver_id');
+        $receiver = $this->userRepository->findOneById($receiverId);
+
+        if ($receiver) {
+            $consumption = new Consumption($currentUser, $receiver);
+
+            $this->entityManager->persist($consumption);
+            $this->entityManager->flush();
+
+            return new RedirectResponse(
+                $this->urlGenerator->generate('question_index')
+            );
+        }
+
+        return [
+            'users' => $users
+        ];
     }
 }

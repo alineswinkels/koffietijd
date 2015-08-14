@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+{% block content %}
+    <h1>Voor wie haal je koffie?</h1>
+    <section id='heads'>
+        <a href="{{ path('user_consumption', { 'receiver_id': app.user.id }) }}">
+            <div class='head' style="background-image:url('{{ asset(app.user.imagePath) }}');" alt='{{ app.user }}'></div>
+            <h2>Mezelf ofcourse</h2>
+        </a>
+
+        {% for user in users %}
+            <a href="{{ path('user_consumption', { 'receiver_id': user.id }) }}">
+                <div class='head' style="background-image:url('{{ asset(user.imagePath) }}');" alt='{{ user }}'></div>
+                <h2>{{ user }}</h2>
+            </a>
+        {% endfor %}
+    </section>
+{% endblock %}
+

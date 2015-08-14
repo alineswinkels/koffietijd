@@ -1,10 +1,16 @@
+# question
+question_index:
+    path:  /vragen
+    defaults: { _controller: app.controller.question:indexAction }
+
+# user
 user_login:
     path:  /inloggen
     defaults: { _controller: app.controller.user:loginAction }
 
-user_pick:
-    path:  /voor-wie-koffie
-    defaults: { _controller: app.controller.user:pickAction }
+user_consumption:
+    path:  /voor-wie-haal-je-koffie
+    defaults: { _controller: app.controller.user:consumptionAction }
 
 user_logout:
     path:  /uitloggen

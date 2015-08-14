@@ -21,3 +21,6 @@ FH\Bundle\AppBundle\Entity\User:
         code:
             type:           integer
             unique:         true
+        image:
+            type:           string
+            length:         120
