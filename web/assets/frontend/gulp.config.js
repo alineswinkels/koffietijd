@@ -3,7 +3,7 @@ var _ = require('lodash'),
 
 var dev = {
     imports: [],
-    entries: { app: ['src/scss/app.scss', 'src/js/app.js'] },
+    entries: { app: ['src/scss/app.scss', 'src/js/app.js' ] },
     sass: {
         outputStyle: 'nested',
         includePaths: [

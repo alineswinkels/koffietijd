@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block content %}
-    <h1>De tussenstand</h1>
+    <h1 class="js-volume" data-url="{{ path('user_login') }}">De tussenstand</h1>
     <section class='rank'>
     	<div class='rank_name'>
     		<img class='rank_icon' src="{{ asset('img/coffee.png') }}" />
