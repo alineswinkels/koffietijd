@@ -123,6 +123,6 @@ class Question
 
     public function getImagePath()
     {
-        return sprintf('uploads/question/%s', $this->image);
+        return sprintf('images/question/%s', $this->image);
     }
 }
