@@ -26,7 +26,7 @@ security:
                 check_path:     /login_check
             logout:
                 path:           user_logout
-                target:         user_login
+                target:         home
 
     access_control:
         - { path: ^/, role: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
