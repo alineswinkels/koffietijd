@@ -16,7 +16,8 @@
 
 {% block container %}
     {% if sessionProvider.currentSession %}
-        <span class="js-counter">{{ sessionProvider.currentSession.secondsLeft }}</span>
+        <div id='count_down'></div>
+        <span class="js-counter" data-url="{{ path('home') }}" data-seconds-left="{{ sessionProvider.currentSession.secondsLeft }}"></span>
     {% endif %}
 
     <div>

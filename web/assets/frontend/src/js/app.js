@@ -66,19 +66,23 @@ var volumeElement = null;
 window.onload = function() {
 
 
-    $("#koffiecode").focus(); 
-    //    $( ".koffiecode" ).click(function() {
-    //   alert('test');
-    // });
+
 
     volumeElement = $('.js-volume');
 
     var counter = $('.js-counter');
     if (counter.length) {
-        setInterval(function () {
-            var val = Math.max(counter.html() - 1, 0);
-            counter.html(val);
-        }, 1000);
+        var secondsLeft = Math.max(counter.data('seconds-left'), 0);
+        console.log(secondsLeft);
+
+        $( "#count_down" ).css('height',secondsLeft/35*100 + 'vh').animate({
+        height: 0,
+      }, secondsLeft * 1000 );
+
+    // set up the next visual callback
+    setTimeout(function(){
+        window.location.href = counter.data('url');
+    }, secondsLeft * 1000);
     }
 
     if (!volumeElement.length) {
