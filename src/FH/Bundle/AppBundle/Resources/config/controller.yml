@@ -3,6 +3,8 @@ services:
         class: FH\Bundle\AppBundle\Controller\MainController
         arguments:
             - @app.repository.user
+            - @app.service.session_provider
+            - @router
 
     app.controller.question:
         class: FH\Bundle\AppBundle\Controller\QuestionController

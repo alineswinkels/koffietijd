@@ -45,6 +45,7 @@ class UserController
 
     /**
      * @param UserRepository $userRepository
+     * @param QuestionRepository $questionRepository
      * @param LoginUser $loginUser
      * @param UrlGeneratorInterface $urlGenerator
      * @param EntityManager $entityManager

@@ -4,3 +4,8 @@ services:
         arguments:
             - @security.token_storage
             - @security.authentication.manager
+
+    app.service.session_provider:
+        class: FH\Bundle\AppBundle\Session\SessionProvider
+        arguments:
+            - @session

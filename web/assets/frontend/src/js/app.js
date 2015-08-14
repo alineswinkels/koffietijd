@@ -60,14 +60,20 @@ function volumeAudioProcess( event ) {
 
 var audioContext = null;
 var meter = null;
-var WIDTH=500;
-var HEIGHT=50;
 var rafID = null;
 var volumeElement = null;
 
 window.onload = function() {
 
     volumeElement = $('.js-volume');
+
+    var counter = $('.js-counter');
+    if (counter.length) {
+        setInterval(function () {
+            var val = Math.max(counter.html() - 1, 0);
+            counter.html(val);
+        }, 1000);
+    }
 
     if (!volumeElement.length) {
         return;

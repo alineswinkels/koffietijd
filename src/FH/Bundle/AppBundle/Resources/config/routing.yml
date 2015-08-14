@@ -2,6 +2,10 @@ home:
     path:  /
     defaults: { _controller: app.controller.main:homeAction }
 
+start_session:
+    path:  /start-session
+    defaults: { _controller: app.controller.main:startSessionAction }
+
 # question
 question_detail:
     path:  /vraag/{id}/{answer}
