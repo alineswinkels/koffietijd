@@ -34,19 +34,121 @@ input[type='submit']{
 	font-size: 0.8em;
 	
 }
-.head{
-	width:100%;
-	height:100%;
+a div, .headrank .head{
+	width:30%;
+	height:0;
+	padding-top: 30%;
+	margin:0 auto;
 	border-radius: 50%;
 	border:none;
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+a div{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+}
+
 #heads a:nth-child(1){
 	height:200px;
 	width:200px;
 }
 #heads a:nth-child(1) h2{
 	font-size: 1.5em;
+}
+
+.rank{
+	width:20%;
+	margin-left:10%;
+	float: left;
+	letter-spacing: 1px;
+}
+.headrank p{
+	font-size: 1.5em;
+	font-weight: 800;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	text-align: right;
+}
+.point_despription{
+	font-size: 0.7em;
+	font-weight: 300;
+}
+
+.rank h2{
+	margin: 0;
+	bottom:0;
+	margin-top: 0.5em;
+	font-weight: 800;
+}
+.rank h3{
+	font-weight: 400;
+	margin: 0;
+}
+.rank .headrank{
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	display: block;
+	height: auto;
+	width: auto;
+	
+	margin-top: 4em;
+	text-decoration: none;
+	font-size: 0.5em;
+
+}
+
+.rank .headrank:nth-child(1) .head{
+	width:50%;
+	padding-top: 50%;
+}
+
+.rank .headrank:nth-child(2) .head{
+	width:40%;
+	padding-top: 40%;
+}
+
+.rank .headrank:nth-child(3) .head{
+
+
+}
+.rank_description{
+	position: absolute;
+	top:0;
+	width:25%;
+	height:0;
+	padding-top: 25%;
+	right:0;
+}
+
+.rank_name{
+	width:100%;
+	height:auto;
+	position: relative;
+}
+.rank_name h1{
+	text-align: right;
+	font-size: 1em;
+}
+.rank_icon{
+	height: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+.coffee{
+	background-image: url('img/coffee.png');
+}
+.butler{
+	background-image: url('img/butler.png');
 }
