@@ -4,23 +4,9 @@
     <h1>{{ question.title }}</h1>
     <img class='quiz_img' src="{{ asset(question.imagePath) }}" alt="{{ question.title }}" />
 
-    <form method="post" class='quiz_form'>
-        <label for="a">{{ question.answerA }}</label>
-        <input type="radio" id="a" name="answer" value="a" />
-        <br />
-
-        <label for="b">{{ question.answerB }}</label>
-        <input type="radio" id="b" name="answer" value="b" />
-        <br />
-
-        <label for="c">{{ question.answerC }}</label>
-        <input type="radio" id="c" name="answer" value="c" />
-        <br />
-
-        <label for="d">{{ question.answerD }}</label>
-        <input type="radio" id="d" name="answer" value="d" />
-        <br/>
-        <input class='submit_answer' type="submit" value="Verstuur" />
-    </form>
+    <a href="{{ path('question_detail', { id: question.id, answer: 'a' }) }}">{{ question.answerA }}</a>
+    <a href="{{ path('question_detail', { id: question.id, answer: 'b' }) }}">{{ question.answerB }}</a>
+    <a href="{{ path('question_detail', { id: question.id, answer: 'c' }) }}">{{ question.answerC }}</a>
+    <a href="{{ path('question_detail', { id: question.id, answer: 'd' }) }}">{{ question.answerD }}</a>
 {% endblock %}
 

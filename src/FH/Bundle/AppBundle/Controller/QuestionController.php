@@ -61,14 +61,13 @@ class QuestionController
      *
      * @param Request $request
      * @param Question $question
+     * @param string $answer
      * @return array
      */
-    public function detailAction(Request $request, Question $question)
+    public function detailAction(Request $request, Question $question, $answer = null)
     {
         /** @var User $currentUser */
         $currentUser = $this->entityManager->merge($this->loginUser->getUser());
-
-        $answer = $request->request->get('answer');
 
         if ($answer) {
             $correct = $answer == $question->getCorrectAnswer();
