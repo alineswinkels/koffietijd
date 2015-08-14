@@ -1,3 +1,10 @@
-home:
-    path:  /
-    defaults: { _controller: FHAppBundle:Main:home }
+user_login:
+    path:  /inloggen
+    defaults: { _controller: app.controller.user:loginAction }
+
+user_pick:
+    path:  /voor-wie-koffie
+    defaults: { _controller: app.controller.user:pickAction }
+
+user_logout:
+    path:  /uitloggen

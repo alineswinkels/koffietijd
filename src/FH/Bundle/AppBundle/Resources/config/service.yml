@@ -1,0 +1,6 @@
+services:
+    app.service.login_user:
+        class: FH\Bundle\AppBundle\User\LoginUser
+        arguments:
+            - @security.token_storage
+            - @security.authentication.manager

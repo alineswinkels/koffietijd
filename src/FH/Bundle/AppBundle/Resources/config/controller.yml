@@ -1,0 +1,7 @@
+services:
+    app.controller.user:
+        class: FH\Bundle\AppBundle\Controller\UserController
+        arguments:
+            - @app.repository.user
+            - @app.service.login_user
+            - @router

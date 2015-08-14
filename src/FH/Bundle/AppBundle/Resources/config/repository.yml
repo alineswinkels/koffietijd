@@ -1,0 +1,5 @@
+services:
+    app.repository.user:
+        class: FH\Bundle\AppBundle\Repository\UserRepository
+        arguments:
+            - @doctrine.orm.entity_manager

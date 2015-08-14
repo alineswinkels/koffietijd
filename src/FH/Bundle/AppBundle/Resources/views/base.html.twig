@@ -14,16 +14,16 @@
     {% endjavascripts %}
 {% endblock %}
 
-{% block title %}App title{% endblock %}
+{% block title %}Koffietijd{% endblock %}
 
 {% block header %}
-    <header>
-        <nav>{{ knp_menu_render('main') }}</nav>
-    </header>
+    {% if app.user %}
+        <h1>Welkom {{ app.user }}</h1>
+    {% endif %}
 {% endblock %}
 
 {% block footer %}
-    <footer>
-        <span class="credits">Website door <a href="http://www.freshheads.com" rel="external">Freshheads</a>
-    </footer>
+    {% if app.user %}
+        <a href="{{ path('user_logout') }}">Uiltoggen</a>
+    {% endif %}
 {% endblock %}
