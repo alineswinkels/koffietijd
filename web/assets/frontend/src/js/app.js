@@ -128,10 +128,14 @@ function gotStream(stream) {
 function drawLoop() {
     console.log(meter.volume);
 
-    if (meter.volume > 0.2) {
+    volumeElement.html(meter.volume);
+
+    if (meter.volume > 0.15) {
         window.location.href = volumeElement.data('url');
     }
 
     // set up the next visual callback
-    rafID = window.requestAnimationFrame( drawLoop );
+    setTimeout(function(){
+        rafID = window.requestAnimationFrame( drawLoop );
+    }, 50);
 }
