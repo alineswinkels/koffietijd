@@ -23,6 +23,10 @@
     </section>
 
     <section class='rank'>
+        <div class='rank_name'>
+       		<img class='rank_icon' src="{{ asset('img/butler.png') }}" />
+       		<h1>meeste koffie gebracht</h1>
+       	</div>
         {% for topFetcher in topFetchers %}
             {% set _user = topFetcher[0] %}
             <div class='headrank'>
@@ -37,6 +41,10 @@
     </section>
 
     <section class='rank'>
+        <div class='rank_name'>
+       		<img class='rank_icon' src="{{ asset('img/quiz.png') }}" />
+       		<h1>meeste kennis</h1>
+       	</div>
         {% for topQuestionResult in topQuestionResults %}
             {% set _user = topQuestionResult[0] %}
     		<div class='headrank'>
