@@ -1,0 +1,59 @@
+{
+    "type": "project",
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/symfony": "2.7.*",
+        "doctrine/orm": "~2.5",
+        "doctrine/doctrine-bundle": "~1.2",
+        "doctrine/doctrine-migrations-bundle": "~1.0",
+        "doctrine/migrations": "1.0.*@dev",
+        "twig/extensions": "~1.0",
+        "symfony/assetic-bundle": "~2.3",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~3.0.12",
+        "sensio/framework-extra-bundle": "~3.0",
+        "sensio/generator-bundle": "2.4.*",
+        "knplabs/knp-menu-bundle": "1.1.*",
+        "sp/bower-bundle": "0.11.*",
+        "freshheads/style-bundle": "1.2.*",
+        "freshheads/deploy-bundle": "1.1.*",
+        "freshheads/essentials-bundle": "1.0.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.3.*",
+        "phing/phing": "2.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:freshheads/FHStyleBundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:freshheads/FHDeployBundle.git"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:freshheads/FHEssentialsBundle.git"
+        }
+    ]
+}

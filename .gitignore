@@ -1,0 +1,16 @@
+/.idea
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+/app/sessions/*
+/bin
+/build
+/vendor
+/web/bundles
+/web/uploads
+/src/FH/Bundle/AppBundle/Resources/public/components/
+/node_modules
+/app/documents
+/web/assets/*/build
+/web/assets/*/node_modules
+/web/assets/*/bower_components

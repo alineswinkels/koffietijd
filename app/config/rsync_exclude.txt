@@ -1,0 +1,17 @@
+._*
+.AppleDouble
+.DS_Store
+.git*
+.idea
+Thumbs.db
+app/cache/*
+app/logs/*
+app/sessions/*
+web/app_debug.php
+web/config.php
+web/uploads
+Vagrantfile
+build.*
+composer.*
+.travis.yml
+node_modules

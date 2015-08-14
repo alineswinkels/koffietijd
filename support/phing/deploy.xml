@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="deploy" name="deployment">
+    <!-- Build properties -->
+    <property file="build.properties"/>
+
+    <!-- Import deployment targets -->
+    <import file="vendor/freshheads/deploy-bundle/Resources/phing/deploy.xml"/>
+
+    <!--
+        You can customize the deploy build steps in this target.
+        This target is executed after a fresh checkout of the code is created.
+
+        See the Phing manual for the available tasks, that you can use:
+        http://www.phing.info/docs/guide/stable/
+    -->
+    <target name="deploy-build" depends="fhdeploy.deploy-build" unless="deploy.skipBuild" description="Builds the exported project.">
+        <exec command="${deploy.console} doctrine:cache:clear-metadata --no-debug --flush --env=${deploy.env}" dir="${deploy.exportdir}" checkreturn="false" passthru="true"/>
+        <!-- executed twice on purpose! -->
+        <exec command="${deploy.console} doctrine:cache:clear-metadata --no-debug --flush --env=${deploy.env}" dir="${deploy.exportdir}" checkreturn="false" passthru="true"/>
+        <exec command="${deploy.console} assets:install --symlink --relative" dir="${deploy.exportdir}" checkreturn="true" passthru="true"/>
+        <exec command="npm install" dir="${deploy.exportdir}" checkreturn="true" passthru="true"/>
+        <exec command="gulp --env=${deploy.env}" dir="${deploy.exportdir}" checkreturn="true" passthru="true"/>
+        <exec command="${deploy.console} assetic:dump --no-debug --env=${deploy.env}" dir="${deploy.exportdir}" checkreturn="true" passthru="true" logoutput="${deploy.verbose}"/>
+    </target>
+</project>

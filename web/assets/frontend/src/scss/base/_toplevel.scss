@@ -1,0 +1,21 @@
+/*----------------------------------------------------------------------------*\
+    TOPLEVEL
+
+    Use this to style high level elements that can't be part of a module.
+\*----------------------------------------------------------------------------*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+}

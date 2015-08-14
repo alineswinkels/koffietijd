@@ -1,0 +1,3 @@
+fh_app:
+    resource: "@FHAppBundle/Resources/config/routing.yml"
+    prefix:   /

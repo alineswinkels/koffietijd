@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="build" name="symfony-standard">
+    <!-- Build properties -->
+    <property file="build.properties" />
+
+    <!-- Overwrite with -Denv=[environment] -->
+    <property name="env" value="dev" />
+
+    <target name="deploy">
+        <phing buildfile="support/phing/deploy.xml" inheritAll="true" haltonfailure="true" />
+    </target>
+
+    <target name="test-ci">
+        <exec command="phpunit -c support/phpunit --coverage-clover ${project.basedir}/build/logs/phpunit-clover.xml --log-junit ${project.basedir}/build/logs/phpunit.xml" passthru="true" dir="${project.basedir}">
+        </exec>
+    </target>
+
+    <target name="ci-build" depends="ci-clean,ci-prepare,test-ci,phpcs-ci" />
+
+    <target name="ci-clean">
+        <delete dir="${project.basedir}/build" />
+        <!-- removes deployments that errored -->
+        <exec command="rm -Rf test-*" dir="${project.basedir}" checkreturn="false"/>
+    </target>
+
+    <target name="ci-prepare">
+        <mkdir dir="${project.basedir}/build" />
+        <mkdir dir="${project.basedir}/build/logs" />
+    </target>
+
+    <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer and print human readable output.">
+        <exec executable="phpcs" passthru="true">
+            <arg value="--extensions=php" />
+            <arg value="--standard=PSR1,PSR2" />
+            <arg value="--ignore=*/Resources/*,*/Tests/*" />
+            <arg path="${project.basedir}/src" />
+        </exec>
+    </target>
+
+    <target name="phpcs-ci" description="Find coding standard violations using PHP_CodeSniffer, creating a log file for the CI server.">
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--extensions=php" />
+            <arg value="--standard=PSR1,PSR2" />
+            <arg value="--ignore=*/Resources/*,*/Tests/*" />
+            <arg value="--report=checkstyle" />
+            <arg value="--report-file=${project.basedir}/build/logs/checkstyle.xml" />
+            <arg path="${project.basedir}/src" />
+        </exec>
+    </target>
+
+    <target name="phpmd" description="Perform project mess detection using PHPMD and print human readable output.">
+        <phpmd rulesets="codesize,controversial,design,naming,unusedcode">
+            <fileset dir="${project.basedir}">
+                <include name="src/**" />
+                <exclude name="src/**/Resources/*" />
+                <exclude name="src/**/Tests/*" />
+            </fileset>
+        </phpmd>
+    </target>
+
+    <!-- This target is executed when running phing without arguments -->
+    <target name="build" description="Builds the project.">
+        <exec command="rm -Rf app/cache/*" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+        <exec command="composer install" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+        <exec command="${build.console} doctrine:cache:clear-metadata --env=${env} --flush --no-debug" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+        <exec command="${build.console} assets:install --symlink --relative --env=${env}" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+        <exec command="npm install" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+        <exec command="gulp" dir="${project.basedir}" checkreturn="true" passthru="true"/>
+    </target>
+</project>
